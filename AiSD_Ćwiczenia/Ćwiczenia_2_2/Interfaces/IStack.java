@@ -1,4 +1,4 @@
-package AiSD_Ćwiczenia.Ćwiczenia_2_2;
+package AiSD_Ćwiczenia.Ćwiczenia_2_2.Interfaces;
 
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.Exceptions.EmptyStackException;
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.Exceptions.FullStackException;

@@ -2,7 +2,7 @@ package AiSD_Ćwiczenia.Ćwiczenia_2_2.MyStacks;
 
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.Exceptions.EmptyStackException;
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.Exceptions.FullStackException;
-import AiSD_Ćwiczenia.Ćwiczenia_2_2.IStack;
+import AiSD_Ćwiczenia.Ćwiczenia_2_2.Interfaces.IStack;
 
 public class MyStack<T> implements IStack<T> {
     private static final int DEFAULT_CAPACITY = 1024;
