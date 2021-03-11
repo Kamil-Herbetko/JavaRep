@@ -9,6 +9,15 @@ public class MyQueue<T> implements IQueue<T> {
     private T array[];
     private int endIndex = 0;
 
+    @SuppressWarnings("unchecked")
+    public MyQueue(int size) {
+        array=(T[])new Object[size];
+    }
+
+    public MyQueue() {
+        this(DEFAULT_CAPACITY);
+    }
+
     @Override
     public boolean isEmpty() {
         return endIndex == 0;
