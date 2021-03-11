@@ -1,13 +1,13 @@
-package AiSD_Ćwiczenia.Ćwiczenia2;
+package AiSD_Ćwiczenia.Ćwiczenia_2_1;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class IteratorTablicy implements Iterator<Student> {
-    private Student[] array;
+public class IteratorTablicy<T> implements Iterator<T> {
+    private T[] array;
     private int pos;
 
-    public IteratorTablicy(Student[] array) {
+    public IteratorTablicy(T[] array) {
         this.array = array;
         this.pos = 0;
     }
@@ -21,7 +21,7 @@ public class IteratorTablicy implements Iterator<Student> {
     }
 
     @Override
-    public Student next() throws NoSuchElementException {
+    public T next() throws NoSuchElementException {
         if (hasNext()){
             return array[pos++];
         }

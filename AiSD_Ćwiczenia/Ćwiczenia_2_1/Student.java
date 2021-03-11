@@ -1,4 +1,4 @@
-package AiSD_Ćwiczenia.Ćwiczenia2;
+package AiSD_Ćwiczenia.Ćwiczenia_2_1;
 
 public class Student {
     private int numer_indeksu;
@@ -47,6 +47,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("| %13d | %-20s | %-15s | %1.1f |", this.numer_indeksu, this.nazwisko, this.imie, this.ocena);
+        return String.format("| %6d | %-20s | %-15s | %1.1f |", this.numer_indeksu, this.nazwisko, this.imie, this.ocena);
     }
 }
