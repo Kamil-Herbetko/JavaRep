@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class IteratorTablicy<T> implements Iterator<T> {
-    private T[] array;
+    private final T[] array;
     private int pos;
 
     public IteratorTablicy(T[] array) {

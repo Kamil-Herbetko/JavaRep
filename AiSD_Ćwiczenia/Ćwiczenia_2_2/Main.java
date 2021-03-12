@@ -5,6 +5,7 @@ import AiSD_Ćwiczenia.Ćwiczenia_2_2.Exceptions.EmptyStackException;
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.Exceptions.FullQueueException;
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.Exceptions.FullStackException;
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.MyQueues.MyCyclicQueue;
+import AiSD_Ćwiczenia.Ćwiczenia_2_2.MyQueues.MyCyclicQueueWithCount;
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.MyQueues.MyQueue;
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.MyStacks.MyDrowningStack;
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.MyStacks.MyStack;
@@ -15,11 +16,14 @@ public class Main {
         MyDrowningStack<Integer> myDrowningStack = new MyDrowningStack<>(10);
         MyQueue<Integer> myQueue = new MyQueue<>(10);
         MyCyclicQueue<Integer> myCyclicQueue = new MyCyclicQueue<>(10);
+        MyCyclicQueueWithCount<Integer> myCyclicQueueWithCount = new MyCyclicQueueWithCount<>(10);
 
         //test_Stack(myStack);
         //test_Drownning_Stack(myDrowningStack);
         //test_Queue(myQueue);
         //test_Cyclic_Queue(myCyclicQueue);
+        //test_Cyclic_Queue(myCyclicQueueWithCount);
+        zmien_na_binarne(15);
     }
 
     public static void test_Stack(MyStack<Integer> myStack) throws FullStackException, EmptyStackException {
@@ -97,5 +101,35 @@ public class Main {
         System.out.println("IsFull: " + myCyclicQueue.isFull());
         myCyclicQueue.enqueue(1);
         System.out.println("-------------------------------------------------------");
+    }
+
+    public static void test_Cyclic_Queue(MyCyclicQueueWithCount<Integer> myCyclicQueueWithCount) throws FullQueueException, EmptyQueueException {
+        System.out.println("Cyclic queue");
+        System.out.println("-------------------------------------------------------");
+        System.out.println("IsEmpty: " + myCyclicQueueWithCount.isEmpty());
+        System.out.println("IsFull: " + myCyclicQueueWithCount.isFull());
+        myCyclicQueueWithCount.enqueue(1);
+        myCyclicQueueWithCount.enqueue(2);
+        System.out.println("First: " + myCyclicQueueWithCount.first());
+        System.out.println("Dequeue: " + myCyclicQueueWithCount.dequeue());
+        System.out.println("First: " + myCyclicQueueWithCount.first());
+        for (int i = 0; i < 9; i++) {
+            myCyclicQueueWithCount.enqueue(i);
+        }
+        System.out.println("IsFull: " + myCyclicQueueWithCount.isFull());
+        myCyclicQueueWithCount.enqueue(1);
+        System.out.println("-------------------------------------------------------");
+    }
+
+    public static void zmien_na_binarne(int n) throws FullStackException, EmptyStackException {
+        MyStack<Integer> myStack = new MyStack<>(32);
+        while (n >= 1){
+            myStack.push(n % 2);
+            n /= 2;
+        }
+
+        while (!myStack.isEmpty()){
+            System.out.print(myStack.pop());
+        }
     }
 }

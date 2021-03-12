@@ -49,7 +49,7 @@ public class Zadanie_1 {
     }
 
     public static void wylicz_i_wypisz_z_oceną_pozytywną(Student[] tabStudentów){
-        IteratorFiltrujący<Student> iteratorFiltrujący = new IteratorFiltrujący<>(new IteratorTablicy<Student>(tabStudentów), (Student st) -> (st.getOcena() > 2.0));
+        IteratorFiltrujący<Student> iteratorFiltrujący = new IteratorFiltrujący<>(new IteratorTablicy<Student>(tabStudentów), (Student st) -> st.getOcena() > 2.0);
 
         int n = 0;
         double suma = 0;
@@ -77,5 +77,4 @@ public class Zadanie_1 {
             }
         }
     }
-
 }
