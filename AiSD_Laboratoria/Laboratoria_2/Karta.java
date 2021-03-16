@@ -1,6 +1,6 @@
 package AiSD_Laboratoria.Laboratoria_2;
 
-import java.util.Objects;
+
 
 public class Karta {
     public static final String[] wartości = {"as", "2", "3", "4", "5", "6", "7", "8", "9", "10", "walet", "dama", "król"};
@@ -37,10 +37,7 @@ public class Karta {
         return wartosc == karta.wartosc && kolor == karta.kolor;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(wartosc, kolor);
-    }
+
 
     @Override
     public String toString() {
