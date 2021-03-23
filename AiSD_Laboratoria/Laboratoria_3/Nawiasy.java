@@ -34,7 +34,7 @@ public class Nawiasy {
                     System.out.println("Podaj wyrażenie:");
                     String wyrazenie = scanner.nextLine();
 
-                    if (czyJestPalindromem(wyrazenie)){
+                    if (czyJestPalindromemZOdwroceniemStosu(wyrazenie)){
                         System.out.println("Wyrażenie jest palindromem");
                     }
                     else {
@@ -98,7 +98,7 @@ public class Nawiasy {
     }
 
     public static boolean czyJestPalindromem(String slowo) throws FullStackException, EmptyStackException {
-        ArrayStack<Character> stack = new ArrayStack<Character>(slowo.length());
+        ArrayStack<Character> stack = new ArrayStack<>(slowo.length());
         String odwroconeSlowo = "";
 
         for (char ch : slowo.toCharArray()){
@@ -114,5 +114,23 @@ public class Nawiasy {
         }
 
         return false;
+    }
+
+    public static boolean czyJestPalindromemZOdwroceniemStosu(String slowo) throws FullStackException {
+        ArrayStack<Character> stack = new ArrayStack<>(slowo.length());
+        ArrayStack<Character> copystack = new ArrayStack<>(slowo.length());
+
+        for (char ch : slowo.toCharArray()){
+            stack.push(ch);
+            copystack.push(ch);
+        }
+        copystack.reverseStack();
+
+        if (copystack.equals(stack)){
+            return true;
+        }
+
+        return false;
+
     }
 }
