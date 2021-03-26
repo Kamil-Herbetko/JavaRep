@@ -25,6 +25,11 @@ public class OneWayLinkedListStraightWithSentinel<T> extends AbstractList<T>{
     @Override
     public boolean insert(T e) {
         Element newElem=new Element(e);
+        if (head==sentinel){
+            newElem.setNext(sentinel);
+            head = newElem;
+            return true;
+        }
         Element tail=head;
         while(tail.getNext()!=sentinel)
             tail=tail.getNext();
@@ -156,7 +161,13 @@ public class OneWayLinkedListStraightWithSentinel<T> extends AbstractList<T>{
 
     @Override
     public void wyswietlListe() {
-        System.out.println(this.toString());
+        Element element = head;
+        System.out.print("[");
+        while (element.getNext() != null){
+            System.out.print(element.getValue() + ", ");
+            element = element.getNext();
+        }
+        System.out.println("]");
     }
 
     private class Element{

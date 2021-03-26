@@ -27,6 +27,9 @@ public class RecursivePrint {
                 System.out.println(_list.get(args[0]).toString());
                 recursivePrintFromEnd(_list, args[0] - 1);
             }
+            else {
+                System.out.println(_list.get(args[0]).toString());
+            }
         }
     }
 }

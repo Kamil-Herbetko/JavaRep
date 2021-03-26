@@ -13,6 +13,7 @@ public abstract class AbstractList<T> implements IList<T> {
             for (T item : this){
                 buffer.append(item).append(", ");
                 buffer.setLength(buffer.length() - 2);
+
             }
         }
         buffer.append(']');

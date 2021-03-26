@@ -29,7 +29,7 @@ public class Merge2WayCycledLists {
         }
         else {
             for (int i = 0; i < list2.size(); i++) {
-                list1.insert(index, list2.get(i));
+                list1.insert(index, list2.get(list2.size() - 1 - i));
             }
         }
         return list1;

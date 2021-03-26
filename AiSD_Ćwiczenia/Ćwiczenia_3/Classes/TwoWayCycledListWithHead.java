@@ -20,8 +20,11 @@ public class TwoWayCycledListWithHead<T> extends AbstractList<T>{
         if (head == null){
             return null;
         }
+        if (index == 0){
+            return head;
+        }
         Element elem = head.getNext();
-        int counter=0;
+        int counter=1;
 
         while(elem!=head && counter<index){
             counter++;
@@ -37,8 +40,11 @@ public class TwoWayCycledListWithHead<T> extends AbstractList<T>{
         if (head == null){
             return null;
         }
+        if (head.getValue() == value){
+            return head;
+        }
         Element elem=head.getNext();
-        int counter=0;
+        int counter=1;
         while(elem!=head && !value.equals(elem.getValue())){
             counter++;
             elem=elem.getNext();}
@@ -175,7 +181,14 @@ public class TwoWayCycledListWithHead<T> extends AbstractList<T>{
 
     @Override
     public void wyswietlListe() {
-        System.out.println(this.toString());
+
+        Element element = head;
+        System.out.print("[");
+        while (element.getNext() != head){
+            System.out.print(element.getValue() + ", ");
+            element = element.getNext();
+        }
+        System.out.println(element.getValue() + "]");
     }
 
     private class Element{
