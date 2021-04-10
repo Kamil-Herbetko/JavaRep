@@ -155,7 +155,13 @@ public class OneWayLinkedStraightListWithHead<T> extends AbstractList<T>{
 
     @Override
     public void wyswietlListe() {
-        System.out.println(this.toString());
+        Element element = head;
+        System.out.print("[");
+        while (element != null){
+            System.out.print(element.getValue().toString());
+            element = element.getNext();
+        }
+        System.out.println("]");
     }
 
 

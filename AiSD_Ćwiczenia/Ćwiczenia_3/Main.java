@@ -58,4 +58,25 @@ public class Main {
         Merge2WayCycledLists.merge2toEndOf1(doublelist1, doublelist2).wyswietlListe();
         Merge2WayCycledLists.merge2toAnywhereIn1(doublelist1, doublelist2, 2).wyswietlListe();
     }
+
+    public static void tryliststack() throws EmptyStackException {
+        ListStack<String> stack = new ListStack<>();
+        stack.push("A");
+        stack.push("B");
+        stack.push("C");
+        System.out.println(stack.pop());
+        System.out.println(stack.pop());
+        System.out.println(stack.pop());
+
+    }
+
+    public static void trylistqueue() throws EmptyQueueException, FullQueueException {
+        ListQueue<String> queue = new ListQueue<>();
+        queue.enqueue("A");
+        queue.enqueue("B");
+        queue.enqueue("C");
+        System.out.println(queue.dequeue());
+        System.out.println(queue.dequeue());
+        System.out.println(queue.dequeue());
+    }
 }

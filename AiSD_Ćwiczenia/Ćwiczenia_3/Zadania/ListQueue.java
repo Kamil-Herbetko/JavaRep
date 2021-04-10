@@ -26,14 +26,14 @@ public class ListQueue<T> implements IQueue<T> {
 
     @Override
     public T dequeue() throws EmptyQueueException {
-        T value = _list.delete(0);
+        T value = _list.delete(_list.size() - 1);
         if(value==null) throw new EmptyQueueException();
         return value;
     }
 
     @Override
     public void enqueue(T elem) throws FullQueueException {
-        _list.insert(elem);
+        _list.insert(0, elem);
     }
 
     @Override
