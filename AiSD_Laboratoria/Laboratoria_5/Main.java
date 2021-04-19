@@ -1,6 +1,8 @@
 package AiSD_Laboratoria.Laboratoria_5;
 
+import AiSD_Ćwiczenia.Ćwiczenia_2_2.Exceptions.EmptyStackException;
 import AiSD_Ćwiczenia.Ćwiczenia_3.Classes.TwoWayCycledListWithSentinel;
+import AiSD_Ćwiczenia.Ćwiczenia_3.Zadania.ListStack;
 
 import java.io.*;
 import java.util.Iterator;
@@ -8,7 +10,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws EmptyStackException {
         Random random = new Random();
         TwoWayCycledListWithSentinel<Auto> listaSamochodow = new TwoWayCycledListWithSentinel<>();
         Scanner scanner = new Scanner(System.in);
@@ -31,7 +33,8 @@ public class Main {
             System.out.println("9 - Wyświetlanie danych samochodów, wyprodukowanych w podanym roku.");
             System.out.println("10 - Wyświetlenie danych samochodów o cenach poniżej podanej.");
             System.out.println("11 - Zapis bazy do pliku.");
-            System.out.println("12 - zakończ");
+            System.out.println("12 - Wyjazd z parkingu do kupionego samochodu");
+            System.out.println("13 - Zakończ");
 
             switch (scanner.nextLine().strip()){
                 case "1" ->{
@@ -68,6 +71,9 @@ public class Main {
                     zapisDoPliku(listaSamochodow);
                 }
                 case "12" -> {
+                    autaDoWyjechania(listaSamochodow, scanner);
+                }
+                case "13" -> {
                     run = false;
                     scanner.close();
                     return;
@@ -76,55 +82,14 @@ public class Main {
 
             System.out.println();
         }
-        switch (scanner.nextLine().strip()){
-            case "1" ->{
-                utworzenieListy(listaSamochodow, random, marki, typ, kolory);
-            }
-            case "2" -> {
-                listaSamochodow = odczytZPliku();
-            }
-            case "3" -> {
-                wyswietlWszystkie(listaSamochodow);
-            }
-            case "4" -> {
-                wyswietlJeden(listaSamochodow, scanner);
-            }
-            case "5" -> {
-                dopisanieSamochodu(listaSamochodow,scanner);
-            }
-            case "6" -> {
-                usunZBazy(listaSamochodow, scanner);
-            }
-            case "7" -> {
-                aktualizowanieSamochodu(listaSamochodow, scanner);
-            }
-            case "8" -> {
-                wyswietlanieOPodanejMarce(listaSamochodow, scanner);
-            }
-            case "9" -> {
-                wyswietlanieOPodanymRoku(listaSamochodow, scanner);
-            }
-            case "10" -> {
-                wyswietlanieOCenieNizszejNizPodana(listaSamochodow, scanner);
-            }
-            case "11" -> {
-                zapisDoPliku(listaSamochodow);
-            }
-            case "12" -> {
-                run = false;
-                scanner.close();
-                return;
-            }
-        }
-
-        System.out.println();
     }
 
     public static void utworzenieListy(TwoWayCycledListWithSentinel<Auto> listaSamochodow, Random random, String[] marki, String[] typ, String[] kolory){
         Auto.number = 0;
         listaSamochodow.clear();
         for (int i = 0; i < 40 + random.nextInt(40); i++) {
-            listaSamochodow.insert(new Auto(marki[random.nextInt(marki.length)], typ[random.nextInt(typ.length)], 1990 + random.nextInt(32), 5000 + random.nextInt(900000), kolory[random.nextInt(kolory.length)], random.nextInt(25)));
+            Auto auto = new Auto(marki[random.nextInt(marki.length)], typ[random.nextInt(typ.length)], 1990 + random.nextInt(32), 5000 + random.nextInt(900000), kolory[random.nextInt(kolory.length)], random.nextInt(25));
+            listaSamochodow.insert(auto);
         }
     }
 
@@ -330,6 +295,38 @@ public class Main {
         }
 
         return integer;
+    }
+
+    public static void autaDoWyjechania(TwoWayCycledListWithSentinel<Auto> listaSamochodow, Scanner scanner) throws EmptyStackException {
+        if (!listaSamochodow.isEmpty()){
+            ListStack<Auto> parking = new ListStack<>();
+            ListStack<Auto> wyjechane = new ListStack<>();
+            Iterator<Auto> iterator = listaSamochodow.iterator();
+            while (iterator.hasNext()){
+                parking.push(iterator.next());
+            }
+
+            System.out.println("Podaj numer silnika kupionego samochodu");
+            int numer = get_integer(scanner, "Podaj numer silnika kupionego samochodu");
+            String wyjazd = "Muszą wyjechać samochody w podanej kolejności o numerach: ";
+            String powrót = "Następnie muszą wrócić samochody w podanej kolejności o numerach: ";
+
+            while (parking.top().getNR_SILNIKA() > numer){
+                Auto auto = parking.pop();
+                wyjazd += auto.getNR_SILNIKA() + " ";
+                wyjechane.push(auto);
+            }
+            System.out.println(wyjazd);
+
+            while (!wyjechane.isEmpty()){
+                powrót += wyjechane.pop().getNR_SILNIKA() + " ";
+            }
+            System.out.println(powrót);
+
+        }
+
+
+
     }
 
 }
