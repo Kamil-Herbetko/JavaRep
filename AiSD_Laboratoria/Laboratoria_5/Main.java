@@ -95,7 +95,7 @@ public class Main {
 
     public static void wyswietlWszystkie(TwoWayCycledListWithSentinel<Auto> listaSamochodow){
         Iterator<Auto> iterator = listaSamochodow.iterator();
-        System.out.printf("| %-13s | %-11s | %-9s | %-14s | %-6s | %-12s | %-11s | %-8s |%n", "Numer silnika", "Marka", "Typ", "Data produkcji", "Cena", "Kolor", "Składowanie", "Przecena");
+        System.out.printf("| %-13s | %-11s | %-9s | %-14s | %-6s | %-12s | %-11s | %-9s |%n", "Numer silnika", "Marka", "Typ", "Data produkcji", "Cena", "Kolor", "Składowanie", "Przecena");
         while (iterator.hasNext()){
             System.out.println(iterator.next().toString());
         }

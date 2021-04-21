@@ -108,7 +108,7 @@ public class Auto implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("| %-13d | %-11s | %-9s | %-14d | %-6d | %-12s | %-11d | %-6.2f |", this.NR_SILNIKA, this.marka, this.typ, this.data_produkcji, this.cena, this.kolor, this.skladowanie, this.przecena);
+        return String.format("| %-13d | %-11s | %-9s | %-14d | %-6d | %-12s | %-11d | %-9.2f |", this.NR_SILNIKA, this.marka, this.typ, this.data_produkcji, this.cena, this.kolor, this.skladowanie, this.przecena);
     }
 
     @Override
