@@ -217,4 +217,15 @@ public class OneWayLinkedListStraightWithHeadAndTail<T> extends AbstractList<T>{
         }
     }
 
+    @Override
+    public String toString() {
+        String str = "[";
+        Element actElem = head;
+        while (actElem != null){
+            str += actElem.getValue().toString() + ", ";
+            actElem = actElem.next;
+        }
+        str += "]";
+        return str;
+    }
 }
