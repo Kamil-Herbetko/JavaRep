@@ -6,10 +6,10 @@ import AiSD_Ćwiczenia.Ćwiczenia_2_2.Exceptions.FullQueueException;
 public class Magazyn {
     private ListQueue<Klient> lista_klientów;
 
-    public Magazyn(String[] nazwyKlientów, String[] nazwy, int[] ilości, double[] ceny) throws FullQueueException {
+    public Magazyn(String[] nazwyKlientów, String[][] nazwy, int[][] ilości, double[][] ceny) throws FullQueueException {
         this.lista_klientów = new ListQueue<>();
         for (int i = 0; i < nazwyKlientów.length; i++) {
-            lista_klientów.enqueue(new Klient(nazwyKlientów[i], nazwy, ilości, ceny));
+            lista_klientów.enqueue(new Klient(nazwyKlientów[i], nazwy[i], ilości[i], ceny[i]));
         }
     }
 
@@ -22,15 +22,15 @@ public class Magazyn {
     }
 
     public double zrealizuj() throws EmptyQueueException {
-        double dochód_z_magazynu = 0;
+        double przychód_z_magazynu = 0;
 
         while (!lista_klientów.isEmpty()){
             Klient klient = lista_klientów.dequeue();
             double do_zapłaty = klient.do_zapłaty();
-            dochód_z_magazynu += do_zapłaty;
-            System.out.println("Zlecenie zrealizowane: " + klient.getNazwa_klient() + ", kwota do zapłaty = " + do_zapłaty);
+            przychód_z_magazynu += do_zapłaty;
+            System.out.println("Zlecenie zrealizowane: " + klient.getNazwa_klient() + String.format(", kwota do zapłaty = %.2f", do_zapłaty));
         }
 
-        return dochód_z_magazynu;
+        return przychód_z_magazynu;
     }
 }
