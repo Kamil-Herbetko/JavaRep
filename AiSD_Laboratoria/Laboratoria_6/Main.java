@@ -28,6 +28,7 @@ public class Main {
             System.out.println("6 - Dodanie magazynu do firmy.");
             System.out.println("7 - Dodanie klienta do magazynu firmy.");
             System.out.println("8 - Zakończ.");
+
             switch (scanner.nextLine().strip()) {
                 case "1" -> {
                     utworzenieFirmy(firma, random, tablicaNazwKlientów, tablicaNazwTowarów);
