@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        testDlaN(50000);
+        testDlaN(100000000);
 
     }
 
