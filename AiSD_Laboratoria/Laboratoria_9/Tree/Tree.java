@@ -66,9 +66,18 @@ public class Tree {
                 return calculate(node.left) * calculate(node.right);
             }
             case "/" -> {
+                int mianownik = calculate(node.right);
+                if (mianownik == 0){
+                    throw new ArithmeticException("Nie można dzielić przez zero");
+                    }
                 return calculate(node.left) / calculate(node.right);
+
             }
             case "%" -> {
+                int mianownik = calculate(node.right);
+                if (mianownik == 0){
+                    throw new ArithmeticException("Nie można dzielić przez zero");
+                }
                 return calculate(node.left) % calculate(node.right);
             }
         }

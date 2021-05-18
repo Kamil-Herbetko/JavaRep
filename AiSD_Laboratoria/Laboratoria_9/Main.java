@@ -6,7 +6,7 @@ import AiSD_Ćwiczenia.Ćwiczenia_2_2.Exceptions.EmptyQueueException;
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.Exceptions.FullQueueException;
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.Interfaces.IQueue;
 
-import java.util.ArrayList;
+
 import java.util.Scanner;
 
 public class Main {
