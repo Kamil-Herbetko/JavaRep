@@ -1,5 +1,6 @@
 package AiSD_Ćwiczenia.Ćwiczenia_2_2.Interfaces;
 
+import AiSD_Laboratoria.Laboratoria_10.Node;
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.Exceptions.EmptyQueueException;
 import AiSD_Ćwiczenia.Ćwiczenia_2_2.Exceptions.FullQueueException;
 
