@@ -1,7 +1,10 @@
 package AiSD_Laboratoria.Laboratoria_11;
 
 import java.io.*;
+import java.text.Collator;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +13,8 @@ public class Main {
 
     public static void main(String[] args) throws EmptyQueueException, FullQueueException {
         Scanner scanner = new Scanner(System.in);
-        RBTree<String> drzewo = new RBTree<>(String::compareTo);
+
+        RBTree<String> drzewo = new RBTree<>(new StringPL_Comparator());
         String line;
         String[] words;
 
@@ -30,7 +34,7 @@ public class Main {
                     String nazwa = scanner.nextLine().strip();
 
                     try (BufferedReader br = new BufferedReader(new FileReader(nazwa))) {
-                        drzewo = new RBTree<>(String::compareTo);
+                        drzewo = new RBTree<>(new StringPL_Comparator());
                         mapa.clear();
                         int i0 = 0;
                         while ((line = br.readLine())!= null){
@@ -81,7 +85,7 @@ public class Main {
         }
     }
 
-  public static boolean czy_juz_byl(String s){
+    public static boolean czy_juz_byl(String s){
 
         for (String i : mapa.keySet()) {
 
@@ -92,6 +96,14 @@ public class Main {
 
         return false;
 
+    }
+    public static class StringPL_Comparator implements Comparator<String>{
+
+        @Override
+        public int compare(String o1, String o2) {
+            Collator c = Collator.getInstance(new Locale("pl", "PL"));
+            return c.compare(o1, o2);
+        }
     }
 
 }
